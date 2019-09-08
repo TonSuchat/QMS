@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validator, Validators } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: "app-sign-in",
@@ -9,7 +11,7 @@ import { FormControl, FormGroup, Validator, Validators } from "@angular/forms";
 export class SignInComponent implements OnInit {
   signInForm: FormGroup;
 
-  constructor() {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
     this.initialSignInForm();
@@ -17,6 +19,12 @@ export class SignInComponent implements OnInit {
 
   onSubmit() {
     console.log(this.signInForm.value);
+    // *******for test only*******
+    this.authService.tempLogIsSuccess();
+    if (this.signInForm.value.type === "customer")
+      this.router.navigate(["/customer"]);
+    else this.router.navigate(["/provider"]);
+    // *******for test only*******
   }
 
   initialSignInForm() {

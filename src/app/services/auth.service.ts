@@ -4,9 +4,18 @@ import { Injectable } from "@angular/core";
   providedIn: "root"
 })
 export class AuthService {
+  tempAuthen: boolean = false;
   constructor() {}
 
   isAuthenticated(): boolean {
-    return false;
+    return this.tempAuthen;
+  }
+
+  tempLogIsSuccess(): void {
+    this.tempAuthen = true;
+  }
+
+  tempLogOut(): void {
+    this.tempAuthen = false;
   }
 }
