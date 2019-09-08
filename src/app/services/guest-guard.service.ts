@@ -16,6 +16,7 @@ export class GuestGuardService implements CanActivate {
     | import("@angular/router").UrlTree
     | import("rxjs").Observable<boolean | import("@angular/router").UrlTree>
     | Promise<boolean | import("@angular/router").UrlTree> {
+    console.log("in-guest-guard", this.authService.isAuthenticated());
     if (this.authService.isAuthenticated()) {
       // redirect to customer, provider home page
       this.router.navigate(["/"]);

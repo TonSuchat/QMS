@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { faLink, faHome, faHistory } from "@fortawesome/free-solid-svg-icons";
 
 import { AuthService } from "src/app/services/auth.service";
 
@@ -12,10 +13,4 @@ export class CustomerHomeComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {}
-
-  signOut(): void {
-    console.log("signout");
-    this.authService.tempLogOut();
-    this.router.navigate(["/signin"]);
-  }
 }

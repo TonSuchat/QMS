@@ -2,6 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { ReactiveFormsModule } from "@angular/forms";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { CustomerModule } from "./customer/customer.module";
 import { ProviderModule } from "./provider/provider.module";
 
@@ -15,7 +16,8 @@ import { SignInComponent } from "./components/sign-in/sign-in.component";
     AppRoutingModule,
     ReactiveFormsModule,
     CustomerModule,
-    ProviderModule
+    ProviderModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

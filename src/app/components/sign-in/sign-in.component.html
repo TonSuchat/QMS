@@ -8,22 +8,33 @@
       </div>
       <div class="columns is-centered">
         <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-          <form [formGroup]="signInForm" (ngSubmit)="onSubmit()" class="box">
+          <form
+            [formGroup]="signInForm"
+            (ngSubmit)="onSubmit()"
+            class="box"
+            novalidate
+          >
             <div class="field">
               <label for="" class="label">Email</label>
               <div class="control has-icons-left">
                 <input
                   type="email"
                   class="input"
-                  [class.is-danger]="signInForm.controls['email'].invalid"
+                  [class.is-danger]="
+                    signInForm.controls['email'].invalid &&
+                    signInForm.controls['email'].touched
+                  "
                   formControlName="email"
                 />
                 <span class="icon is-small is-left">
-                  <i class="fa fa-envelope"></i>
+                  <fa-icon [icon]="faEnvelope"></fa-icon>
                 </span>
               </div>
               <p
-                *ngIf="signInForm.controls['email'].invalid"
+                *ngIf="
+                  signInForm.controls['email'].invalid &&
+                  signInForm.controls['email'].touched
+                "
                 class="help is-danger"
               >
                 Please input your valid email.
@@ -36,14 +47,20 @@
                   type="password"
                   class="input"
                   formControlName="password"
-                  [class.is-danger]="signInForm.controls['password'].invalid"
+                  [class.is-danger]="
+                    signInForm.controls['password'].invalid &&
+                    signInForm.controls['password'].touched
+                  "
                 />
                 <span class="icon is-small is-left">
-                  <i class="fa fa-lock"></i>
+                  <fa-icon [icon]="faLock"></fa-icon>
                 </span>
               </div>
               <p
-                *ngIf="signInForm.controls['password'].invalid"
+                *ngIf="
+                  signInForm.controls['password'].invalid &&
+                  signInForm.controls['password'].touched
+                "
                 class="help is-danger"
               >
                 Please input password.

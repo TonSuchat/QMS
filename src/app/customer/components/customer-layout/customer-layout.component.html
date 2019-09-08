@@ -1,0 +1,34 @@
+<!-- Navigation Bar -->
+<app-navigation-bar
+  title="QMS-Customer-Site"
+  (signOut)="signOut()"
+></app-navigation-bar>
+
+<section class="main-content columns is-fullheight">
+  <!-- Side-Menu -->
+  <aside
+    class="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile"
+  >
+    <p class="menu-label is-hidden-touch">MENU</p>
+    <ul class="menu-list">
+      <li>
+        <a [routerLink]="['/customer/home']" routerLinkActive="is-active">
+          <span class="icon"><fa-icon [icon]="faHome"></fa-icon></span> Home
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/customer/history']" routerLinkActive="is-active">
+          <span class="icon"><fa-icon [icon]="faHistory"></fa-icon></span>
+          History
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Content -->
+  <div class="container column is-10">
+    <div class="section">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</section>

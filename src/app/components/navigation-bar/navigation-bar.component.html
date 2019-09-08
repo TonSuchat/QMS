@@ -1,0 +1,27 @@
+<nav class="navbar is-fresh is-transparent has-shadow">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item">
+        {{ title }}
+      </a>
+    </div>
+    <label for="menu-toggle" class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+    <input type="checkbox" id="menu-toggle" class="is-hidden" />
+    <div class="navbar-menu is-static">
+      <div class="navbar-end">
+        <span
+          title="Sign out"
+          class="navbar-item"
+          style="cursor: pointer;"
+          (click)="onSignOut()"
+        >
+          Sign out
+        </span>
+      </div>
+    </div>
+  </div>
+</nav>
