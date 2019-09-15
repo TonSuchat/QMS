@@ -1,101 +1,47 @@
-<section class="hero is-primary is-fullheight">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-          <h1 class="title is-1 has-text-centered">QMS</h1>
-        </div>
-      </div>
-      <div class="columns is-centered">
-        <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-          <form
-            [formGroup]="signInForm"
-            (ngSubmit)="onSubmit()"
-            class="box"
-            novalidate
-          >
-            <div class="field">
-              <label for="" class="label">Email</label>
-              <div class="control has-icons-left">
-                <input
-                  type="email"
-                  class="input"
-                  [class.is-danger]="
-                    signInForm.controls['email'].invalid &&
-                    signInForm.controls['email'].touched
-                  "
-                  formControlName="email"
-                />
-                <span class="icon is-small is-left">
-                  <fa-icon [icon]="faEnvelope"></fa-icon>
-                </span>
-              </div>
-              <p
-                *ngIf="
-                  signInForm.controls['email'].invalid &&
-                  signInForm.controls['email'].touched
-                "
-                class="help is-danger"
-              >
-                Please input your valid email.
-              </p>
-            </div>
-            <div class="field">
-              <label for="" class="label">Password</label>
-              <div class="control has-icons-left">
-                <input
-                  type="password"
-                  class="input"
-                  formControlName="password"
-                  [class.is-danger]="
-                    signInForm.controls['password'].invalid &&
-                    signInForm.controls['password'].touched
-                  "
-                />
-                <span class="icon is-small is-left">
-                  <fa-icon [icon]="faLock"></fa-icon>
-                </span>
-              </div>
-              <p
-                *ngIf="
-                  signInForm.controls['password'].invalid &&
-                  signInForm.controls['password'].touched
-                "
-                class="help is-danger"
-              >
-                Please input password.
-              </p>
-            </div>
-            <div class="field">
-              <div class="control">
-                <label class="radio">
-                  <input
-                    type="radio"
-                    value="customer"
-                    name="type"
-                    formControlName="type"
-                  />
-                  Customer
-                </label>
-                <label class="radio">
-                  <input
-                    type="radio"
-                    value="provider"
-                    name="type"
-                    formControlName="type"
-                  />
-                  Provider
-                </label>
-              </div>
-            </div>
-            <div class="field">
-              <button [disabled]="!signInForm.valid" class="button is-success">
-                Login
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+<div nz-row>
+  <div nz-col nzSpan="6" nzOffset="9">
+    <nz-card [nzCover]="signInCover">
+      <form nz-form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your valid email!">
+            <nz-input-group nzPrefixIcon="user">
+              <input
+                type="text"
+                nz-input
+                formControlName="email"
+                placeholder="Email"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your Password!">
+            <nz-input-group nzPrefixIcon="lock">
+              <input
+                type="password"
+                nz-input
+                formControlName="password"
+                placeholder="Password"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <a class="login-form-forgot" class="login-form-forgot"
+              >Forgot password</a
+            >
+            <button nz-button class="login-form-button" [nzType]="'primary'">
+              Log in
+            </button>
+            Or
+            <a>register now!</a>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </nz-card>
+    <ng-template #signInCover>
+      <img src="../../../assets/images/banner.png" />
+    </ng-template>
   </div>
-</section>
+</div>

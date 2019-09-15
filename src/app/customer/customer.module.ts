@@ -8,13 +8,15 @@ import { CustomerHomeComponent } from "./components/customer-home/customer-home.
 import { NavigationBarComponent } from "../components/navigation-bar/navigation-bar.component";
 import { CustomerLayoutComponent } from "./components/customer-layout/customer-layout.component";
 import { CustomerHistoryComponent } from "./components/customer-history/customer-history.component";
+import { CustomerProfileComponent } from './components/customer-profile/customer-profile.component';
 
 @NgModule({
   declarations: [
     CustomerHomeComponent,
     NavigationBarComponent,
     CustomerLayoutComponent,
-    CustomerHistoryComponent
+    CustomerHistoryComponent,
+    CustomerProfileComponent
   ],
   imports: [RouterModule, BrowserModule, FontAwesomeModule, NgZorroAntdModule]
 })
