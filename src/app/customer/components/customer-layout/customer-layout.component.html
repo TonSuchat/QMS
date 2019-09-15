@@ -1,34 +1,50 @@
-<!-- Navigation Bar -->
-<app-navigation-bar
-  title="QMS-Customer-Site"
-  (signOut)="signOut()"
-></app-navigation-bar>
-
-<section class="main-content columns is-fullheight">
-  <!-- Side-Menu -->
-  <aside
-    class="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile"
+<nz-layout class="app-layout">
+  <nz-sider
+    class="menu-sidebar"
+    nzCollapsible
+    nzWidth="256px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
   >
-    <p class="menu-label is-hidden-touch">MENU</p>
-    <ul class="menu-list">
-      <li>
-        <a [routerLink]="['/customer/home']" routerLinkActive="is-active">
-          <span class="icon"><fa-icon [icon]="faHome"></fa-icon></span> Home
-        </a>
+    <div class="sidebar-logo">
+      <a [routerLink]="['/customer']">
+        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo" />
+        <h1>QMS-Customer-Site</h1>
+      </a>
+    </div>
+    <ul
+      nz-menu
+      nzTheme="dark"
+      nzMode="inline"
+      [nzInlineCollapsed]="isCollapsed"
+    >
+      <li nz-menu-item [routerLink]="['/customer/home']" nzMatchRouter>
+        <i nz-icon nzType="home"></i>
+        <span>Home</span>
       </li>
-      <li>
-        <a [routerLink]="['/customer/history']" routerLinkActive="is-active">
-          <span class="icon"><fa-icon [icon]="faHistory"></fa-icon></span>
-          History
-        </a>
+      <li nz-menu-item [routerLink]="['/customer/history']" nzMatchRouter>
+        <i nz-icon nzType="history"></i>
+        <span>History</span>
       </li>
     </ul>
-  </aside>
-
-  <!-- Content -->
-  <div class="container column is-10">
-    <div class="section">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-</section>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <i
+            class="trigger"
+            nz-icon
+            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+          ></i>
+        </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

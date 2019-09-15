@@ -9,6 +9,7 @@ import { faLink, faHome, faHistory } from "@fortawesome/free-solid-svg-icons";
   styleUrls: ["./customer-layout.component.css"]
 })
 export class CustomerLayoutComponent implements OnInit {
+  isCollapsed = false;
   faLink = faLink;
   faHome = faHome;
   faHistory = faHistory;
