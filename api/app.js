@@ -1,27 +1,25 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const logger = require("morgan");
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
+const errorHandler = require("./helpers/error-handlers");
+
+// connect to mongodb database
+require("./db.js");
 
 // set up express configurations
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// connect to Mongo database
-mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DATABASE, { useNewUrlParser: true }).then(
-  () => {
-    console.log("Connect to QMS database success.");
-  },
-  error => {
-    console.log(`Error when try to connect to QMS database: ${error}`);
-  }
-);
+app.use(logger("dev"));
 
 // setup api routes
+app.use("/api/user", require("./routes/user-route"));
+
+// setup error handlers
+app.use(errorHandler);
 
 // listen app to port env.PORT
 const port = process.env.PORT || 5001;
