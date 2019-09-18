@@ -1,8 +1,11 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 const User = new Schema({
   email: { type: String, required: true },
+  password: { type: String, required: true, trim: true },
   registerType: {
     type: String,
     enum: ["customer", "provider"],
@@ -12,8 +15,17 @@ const User = new Schema({
   lastName: { type: String, required: true },
   address: { type: String },
   mobilePhone: { type: String, required: true },
-  externalLoginProvider: { type: String, enum: ["facebook", "google"] },
+  externalLoginProvider: {
+    type: String,
+    enum: ["facebook", "google"],
+    default: null
+  },
   createdDate: { type: Date, default: Date.now }
+});
+
+User.pre("save", function(next) {
+  this.password = bcrypt.hashSync(this.password, saltRounds);
+  next();
 });
 
 module.exports = mongoose.model("User", User);
