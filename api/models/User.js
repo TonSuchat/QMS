@@ -6,7 +6,7 @@ const saltRounds = 10;
 const User = new Schema({
   email: { type: String, required: true },
   password: { type: String, required: true, trim: true },
-  registerType: {
+  type: {
     type: String,
     enum: ["customer", "provider"],
     required: true
@@ -15,9 +15,9 @@ const User = new Schema({
   lastName: { type: String, required: true },
   address: { type: String },
   mobilePhone: { type: String, required: true },
+  socialSignin: { type: Boolean, required: true, default: false },
   externalLoginProvider: {
     type: String,
-    enum: ["facebook", "google"],
     default: null
   },
   createdDate: { type: Date, default: Date.now }

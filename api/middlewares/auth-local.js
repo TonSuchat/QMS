@@ -7,22 +7,30 @@ const User = db.User;
 const localAuth = new localStrategy(
   {
     usernameField: "email",
-    passwordField: "password"
+    passwordField: "password",
+    passReqToCallback: true
   },
-  function(email, password, done) {
-    console.log("in-auth-local-strategy", email, password);
-    User.findOne({ email, externalLoginProvider: null }, (err, user) => {
-      if (err) {
-        return done(err);
+  function(req, email, password, done) {
+    User.findOne(
+      {
+        email,
+        externalLoginProvider: null,
+        type: req.body.type,
+        socialSignin: false
+      },
+      (err, user) => {
+        if (err) {
+          return done(err, false);
+        }
+        if (!user) {
+          return done(null, false, { message: "Not found email." });
+        }
+        if (!bcrypt.compareSync(password, user.password)) {
+          return done(null, false, { message: "Password is incorrect." });
+        }
+        return done(null, user);
       }
-      if (!user) {
-        return done(null, false, { message: "Not found email." });
-      }
-      if (!bcrypt.compareSync(password, user.password)) {
-        return done(null, false, { message: "Password is incorrect." });
-      }
-      return done(null, user);
-    });
+    );
   }
 );
 
