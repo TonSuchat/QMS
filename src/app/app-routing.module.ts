@@ -19,7 +19,7 @@ const routes: Routes = [
   {
     path: "customer",
     component: CustomerLayoutComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
     children: [
       { path: "", redirectTo: "home", pathMatch: "full" },
       { path: "home", component: CustomerHomeComponent },

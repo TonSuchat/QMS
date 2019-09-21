@@ -18,7 +18,6 @@ export class CustomerLayoutComponent implements OnInit {
   ngOnInit() {}
 
   signOut(): void {
-    this.authService.tempLogOut();
-    this.router.navigate(["/signin"]);
+    this.authService.signout();
   }
 }

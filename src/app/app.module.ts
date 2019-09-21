@@ -10,10 +10,13 @@ import { AppComponent } from "./app.component";
 import { SignInComponent } from "./components/sign-in/sign-in.component";
 import { IconsProviderModule } from "./icons-provider.module";
 import { NgZorroAntdModule, NZ_I18N, en_US } from "ng-zorro-antd";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { registerLocaleData } from "@angular/common";
+
 import en from "@angular/common/locales/en";
+import { ErrorInterceptor } from "./utility/error.interceptor";
+import { JwtInterceptor } from "./utility/jwt.interceptor";
 
 registerLocaleData(en);
 
@@ -32,7 +35,11 @@ registerLocaleData(en);
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

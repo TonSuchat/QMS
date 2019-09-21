@@ -28,10 +28,11 @@ export class SignInComponent implements OnInit {
     if (this.signInForm.valid) {
       this.signinFetching = true;
       this.authService.signin(this.signInForm.value).subscribe(
-        result => {
-          // keep token in localstorage
-          console.log("token", result.token);
-          this.signinFetching = false;
+        _ => {
+          // redirect to customer/provider site
+          if (this.signInForm.value.type === "customer")
+            this.router.navigate(["/customer"]);
+          else this.router.navigate(["/provider"]);
         },
         error => {
           this.errorMessage = error;

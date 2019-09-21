@@ -22,7 +22,7 @@ function signin(req, res, next) {
       return;
     }
     const token = userServices.signin(user);
-    res.json({ token });
+    res.json({ token, user });
   })(req, res, next);
 }
 
