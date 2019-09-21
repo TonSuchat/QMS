@@ -31,13 +31,23 @@
             <a class="login-form-forgot" class="login-form-forgot"
               >Forgot password</a
             >
-            <button nz-button class="login-form-button" [nzType]="'primary'">
+            <button
+              nz-button
+              class="login-form-button"
+              [nzType]="'primary'"
+              [nzLoading]="signinFetching"
+            >
               Log in
             </button>
             Or
             <a>register now!</a>
           </nz-form-control>
         </nz-form-item>
+        <nz-alert
+          *ngIf="errorMessage"
+          nzType="error"
+          [nzMessage]="errorMessage"
+        ></nz-alert>
       </form>
     </nz-card>
     <ng-template #signInCover>

@@ -1,5 +1,6 @@
 const db = require("../db");
 const User = db.User;
+const jwt = require("jsonwebtoken");
 
 module.exports = {
   create: async function(user) {
@@ -8,8 +9,15 @@ module.exports = {
     await newUser.save();
   },
   signin: function(user) {
-    if (!!user) throw "User not found";
+    if (!user) throw "User not found";
     // generate JWT token and send back to client
-    return "token";
+    const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
+      expiresIn: "1h"
+    });
+    return token;
+  },
+  getById: async function(id) {
+    if (!id) throw "Invalid parameter";
+    return await User.findById(id);
   }
 };

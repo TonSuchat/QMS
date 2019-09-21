@@ -5,7 +5,7 @@ const saltRounds = 10;
 
 const User = new Schema({
   email: { type: String, required: true },
-  password: { type: String, required: true, trim: true },
+  password: { type: String, required: true, trim: true, select: false },
   type: {
     type: String,
     enum: ["customer", "provider"],

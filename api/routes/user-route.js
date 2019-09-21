@@ -4,19 +4,13 @@ const router = express.Router();
 const userServices = require("../services/user-service");
 
 // routes
-router.post("/register", register);
-router.post("/signin", passport.authenticate("local"), signin);
+router.get("/profile", profile);
 
-function register(req, res, next) {
+function profile(req, res, next) {
   userServices
-    .create(req.body)
+    .getById(req.user._id)
     .then(user => res.json(user))
     .catch(err => next(err));
-}
-
-function signin(req, res, next) {
-  const token = userServices.signin(req.body.user);
-  res.json({ token });
 }
 
 module.exports = router;

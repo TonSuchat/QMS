@@ -30,7 +30,7 @@ const localAuth = new localStrategy(
         }
         return done(null, user);
       }
-    );
+    ).select("+password");
   }
 );
 

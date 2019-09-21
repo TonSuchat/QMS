@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { Router } from "@angular/router";
 import { AuthService } from "../../services/auth.service";
+import { setDirtyAndValidate } from "../../utility/helper";
 
 @Component({
   selector: "app-sign-in",
@@ -13,6 +14,8 @@ export class SignInComponent implements OnInit {
   faEnvelope = faEnvelope;
   faLock = faLock;
   signInForm: FormGroup;
+  errorMessage: string = null;
+  signinFetching: boolean = false;
 
   constructor(private router: Router, private authService: AuthService) {}
 
@@ -21,13 +24,21 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.signInForm.value);
-    // *******for test only*******
-    this.authService.tempLogIsSuccess();
-    if (this.signInForm.value.type === "customer")
-      this.router.navigate(["/customer"]);
-    else this.router.navigate(["/provider"]);
-    // *******for test only*******
+    setDirtyAndValidate(this.signInForm);
+    if (this.signInForm.valid) {
+      this.signinFetching = true;
+      this.authService.signin(this.signInForm.value).subscribe(
+        result => {
+          // keep token in localstorage
+          console.log("token", result.token);
+          this.signinFetching = false;
+        },
+        error => {
+          this.errorMessage = error;
+          this.signinFetching = false;
+        }
+      );
+    }
   }
 
   initialSignInForm() {

@@ -9,6 +9,7 @@ const errorHandler = require("./helpers/error-handlers");
 
 // auth-middlewares
 require("./middlewares/auth-local");
+require("./middlewares/auth-jwt");
 require("./middlewares/serialize");
 
 // connect to mongodb database
@@ -24,11 +25,17 @@ app.use(session({ secret: process.env.SESSION_SECRET }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// setup api routes
-app.use("/api/user", require("./routes/user-route"));
-
 // setup error handlers
 app.use(errorHandler);
+
+// setup api routes
+app.use("/api/account", require("./routes/auth-route.js"));
+// private routes
+app.use(
+  "/api/user",
+  passport.authenticate("jwt"),
+  require("./routes/user-route")
+);
 
 // listen app to port env.PORT
 const port = process.env.PORT || 5001;
