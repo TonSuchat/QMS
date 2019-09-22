@@ -17,11 +17,12 @@ import { registerLocaleData } from "@angular/common";
 import en from "@angular/common/locales/en";
 import { ErrorInterceptor } from "./utility/error.interceptor";
 import { JwtInterceptor } from "./utility/jwt.interceptor";
+import { RegisterComponent } from "./components/register/register.component";
 
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [AppComponent, SignInComponent],
+  declarations: [AppComponent, SignInComponent, RegisterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

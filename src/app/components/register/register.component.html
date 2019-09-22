@@ -1,0 +1,138 @@
+<div nz-row>
+  <div nz-col nzSpan="12" nzOffset="6">
+    <nz-card nzTitle="Register">
+      <form nz-form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <nz-form-item>
+          <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="email"
+            >E-mail</nz-form-label
+          >
+          <nz-form-control
+            [nzSm]="16"
+            [nzXs]="24"
+            nzErrorTip="Please input your valid email!"
+          >
+            <nz-input-group>
+              <input type="text" nz-input formControlName="email" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="password"
+            >Password</nz-form-label
+          >
+          <nz-form-control
+            [nzSm]="16"
+            [nzXs]="24"
+            nzErrorTip="Please input password"
+          >
+            <nz-input-group>
+              <input type="password" nz-input formControlName="password" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label
+            [nzSm]="5"
+            [nzXs]="24"
+            nzRequired
+            nzFor="confirmPassowrd"
+            >Confirm password</nz-form-label
+          >
+          <nz-form-control
+            [nzSm]="16"
+            [nzXs]="24"
+            nzErrorTip="Please confirm your password"
+          >
+            <nz-input-group>
+              <input
+                type="password"
+                nz-input
+                formControlName="confirmPassword"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="firstName"
+            >First name</nz-form-label
+          >
+          <nz-form-control
+            [nzSm]="16"
+            [nzXs]="24"
+            nzErrorTip="Please input your first name"
+          >
+            <nz-input-group>
+              <input type="text" nz-input formControlName="firstName" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="lastName"
+            >Last name</nz-form-label
+          >
+          <nz-form-control
+            [nzSm]="16"
+            [nzXs]="24"
+            nzErrorTip="Please input your last name"
+          >
+            <nz-input-group>
+              <input type="text" nz-input formControlName="lastName" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="mobilePhone"
+            >Mobile phone</nz-form-label
+          >
+          <nz-form-control
+            [nzSm]="16"
+            [nzXs]="24"
+            nzErrorTip="Please input your mobile phone"
+          >
+            <nz-input-group>
+              <input type="text" nz-input formControlName="mobilePhone" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="address"
+            >Address</nz-form-label
+          >
+          <nz-form-control [nzSm]="16" [nzXs]="24">
+            <nz-input-group>
+              <textarea formControlName="address" nz-input rows="3"></textarea>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="type"
+            >Type</nz-form-label
+          >
+          <nz-form-control
+            [nzSm]="16"
+            [nzXs]="24"
+            nzErrorTip="Choose your type"
+          >
+            <nz-input-group>
+              <nz-radio-group formControlName="type">
+                <label nz-radio nzValue="customer">Customer</label>
+                <label nz-radio nzValue="provider">Provider</label>
+              </nz-radio-group>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control [nzSpan]="16" [nzOffset]="5">
+            <button
+              nz-button
+              [nzType]="'primary'"
+              [nzLoading]="registerFetching"
+            >
+              Register
+            </button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </nz-card>
+  </div>
+</div>

@@ -5,6 +5,7 @@ import { GuestGuardService as GuestGuard } from "./services/guest-guard.service"
 import { AuthGuardService as AuthGuard } from "./services/auth-guard.service";
 
 import { SignInComponent } from "./components/sign-in/sign-in.component";
+import { RegisterComponent } from "./components/register/register.component";
 
 import { CustomerLayoutComponent } from "./customer/components/customer-layout/customer-layout.component";
 import { CustomerHomeComponent } from "./customer/components/customer-home/customer-home.component";
@@ -16,6 +17,7 @@ import { ProviderHomeComponent } from "./provider/components/provider-home/provi
 const routes: Routes = [
   { path: "", redirectTo: "signin", pathMatch: "full" },
   { path: "signin", component: SignInComponent, canActivate: [GuestGuard] },
+  { path: "register", component: RegisterComponent },
   {
     path: "customer",
     component: CustomerLayoutComponent,

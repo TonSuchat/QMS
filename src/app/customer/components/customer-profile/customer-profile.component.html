@@ -1,1 +1,7 @@
-<app-user-detail [user]="user"></app-user-detail>
+<app-user-detail *ngIf="user" [user]="user"></app-user-detail>
+<nz-alert
+  *ngIf="errorMessage"
+  nzType="error"
+  [nzMessage]="errorMessage"
+></nz-alert>
+<ngx-spinner></ngx-spinner>

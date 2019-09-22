@@ -1,4 +1,5 @@
 const db = require("../db");
+const mongoose = require("mongoose");
 const User = db.User;
 const jwt = require("jsonwebtoken");
 
@@ -17,7 +18,7 @@ module.exports = {
     return token;
   },
   getById: async function(id) {
-    if (!id) throw "Invalid parameter";
+    if (!id || !mongoose.Types.ObjectId.isValid(id)) throw "Invalid parameter";
     return await User.findById(id);
   }
 };

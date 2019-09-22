@@ -25,9 +25,6 @@ app.use(session({ secret: process.env.SESSION_SECRET }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// setup error handlers
-app.use(errorHandler);
-
 // setup api routes
 app.use("/api/account", require("./routes/auth-route.js"));
 // private routes
@@ -36,6 +33,9 @@ app.use(
   passport.authenticate("jwt"),
   require("./routes/user-route")
 );
+
+// setup error handlers
+app.use(errorHandler);
 
 // listen app to port env.PORT
 const port = process.env.PORT || 5001;

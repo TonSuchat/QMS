@@ -3,6 +3,7 @@ import { RouterModule } from "@angular/router";
 import { BrowserModule } from "@angular/platform-browser";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { NgZorroAntdModule } from "ng-zorro-antd";
+import { NgxSpinnerModule } from "ngx-spinner";
 
 import { CustomerHomeComponent } from "./components/customer-home/customer-home.component";
 import { CustomerLayoutComponent } from "./components/customer-layout/customer-layout.component";
@@ -18,6 +19,12 @@ import { UserDetailComponent } from "../components/user-detail/user-detail.compo
     CustomerProfileComponent,
     UserDetailComponent
   ],
-  imports: [RouterModule, BrowserModule, FontAwesomeModule, NgZorroAntdModule]
+  imports: [
+    RouterModule,
+    BrowserModule,
+    FontAwesomeModule,
+    NgZorroAntdModule,
+    NgxSpinnerModule
+  ]
 })
 export class CustomerModule {}

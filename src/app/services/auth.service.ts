@@ -14,7 +14,6 @@ export class AuthService {
   api_url: string = config.api_url;
   headers = new HttpHeaders().set("Content-Type", "application/json");
 
-  tempAuthen: boolean = false;
   constructor(private http: HttpClient, private router: Router) {}
 
   isAuthenticated(): boolean {
@@ -34,8 +33,16 @@ export class AuthService {
     return user && user !== undefined ? JSON.parse(user) : null;
   }
 
-  tempLogIsSuccess(): void {
-    this.tempAuthen = true;
+  private keepDataIntoLocalStorage(token, user) {
+    // keep token, user in localstorage
+    localStorage.setItem("token", token);
+    localStorage.setItem("user", JSON.stringify(user));
+  }
+
+  register(user: any): Observable<User> {
+    return this.http
+      .post<User>(`${this.api_url}/account/register`, user)
+      .pipe(catchError(handleError));
   }
 
   signin({ email, password, type }): Observable<any> {
@@ -45,8 +52,7 @@ export class AuthService {
         tap((res: any) => {
           if (!res || res === undefined) throw "Not found any response";
           // keep token, user in localstorage
-          localStorage.setItem("token", res.token);
-          localStorage.setItem("user", JSON.stringify(res.user));
+          this.keepDataIntoLocalStorage(res.token, res.user);
         }),
         catchError(handleError)
       );
@@ -56,9 +62,5 @@ export class AuthService {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     return this.router.navigate(["/signin"]);
-  }
-
-  tempLogOut(): void {
-    this.tempAuthen = false;
   }
 }
