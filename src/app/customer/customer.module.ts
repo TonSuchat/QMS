@@ -5,18 +5,18 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { NgZorroAntdModule } from "ng-zorro-antd";
 
 import { CustomerHomeComponent } from "./components/customer-home/customer-home.component";
-import { NavigationBarComponent } from "../components/navigation-bar/navigation-bar.component";
 import { CustomerLayoutComponent } from "./components/customer-layout/customer-layout.component";
 import { CustomerHistoryComponent } from "./components/customer-history/customer-history.component";
-import { CustomerProfileComponent } from './components/customer-profile/customer-profile.component';
+import { CustomerProfileComponent } from "./components/customer-profile/customer-profile.component";
+import { UserDetailComponent } from "../components/user-detail/user-detail.component";
 
 @NgModule({
   declarations: [
     CustomerHomeComponent,
-    NavigationBarComponent,
     CustomerLayoutComponent,
     CustomerHistoryComponent,
-    CustomerProfileComponent
+    CustomerProfileComponent,
+    UserDetailComponent
   ],
   imports: [RouterModule, BrowserModule, FontAwesomeModule, NgZorroAntdModule]
 })

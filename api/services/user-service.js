@@ -12,7 +12,7 @@ module.exports = {
     if (!user) throw "User not found";
     // generate JWT token and send back to client
     const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
-      expiresIn: "1h"
+      expiresIn: "10m"
     });
     return token;
   },

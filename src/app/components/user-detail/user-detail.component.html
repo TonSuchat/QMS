@@ -1,0 +1,45 @@
+<form nz-form>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4">First name</nz-form-label>
+    <nz-form-control [nzSpan]="20">
+      <span>{{ user.firstName }}</span>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4">Last name</nz-form-label>
+    <nz-form-control [nzSpan]="20">
+      <span>{{ user.lastName }}</span>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4">Email</nz-form-label>
+    <nz-form-control [nzSpan]="20">
+      <span>{{ user.email }}</span>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4">Address</nz-form-label>
+    <nz-form-control [nzSpan]="20">
+      <span>{{ user.address }}</span>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4">Mobile phone</nz-form-label>
+    <nz-form-control [nzSpan]="20">
+      <span>{{ user.mobilePhone }}</span>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4">Created date</nz-form-label>
+    <nz-form-control [nzSpan]="20">
+      <span>{{ user.createdDate | date: "dd/MM/yyyy HH:mm" }}</span>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control [nzOffset]="4" [nzSpan]="20">
+      <button nz-button nzType="primary">
+        Edit
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

@@ -9,7 +9,6 @@ const User = db.User;
 const jwtOptions = {
   jwtFromRequest: extractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: process.env.SECRET_KEY
-  // passReqToCallback: true
 };
 
 const jwtAuth = new jwtStrategy(jwtOptions, function(payload, done) {

@@ -28,6 +28,8 @@ const localAuth = new localStrategy(
         if (!bcrypt.compareSync(password, user.password)) {
           return done(null, false, { message: "Password is incorrect." });
         }
+        // remove password
+        user.password = undefined;
         return done(null, user);
       }
     ).select("+password");
