@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
@@ -8,6 +8,7 @@ import { ProviderModule } from "./provider/provider.module";
 
 import { AppComponent } from "./app.component";
 import { SignInComponent } from "./components/sign-in/sign-in.component";
+
 import { IconsProviderModule } from "./icons-provider.module";
 import { NgZorroAntdModule, NZ_I18N, en_US } from "ng-zorro-antd";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
@@ -41,6 +42,7 @@ registerLocaleData(en);
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}

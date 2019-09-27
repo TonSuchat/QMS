@@ -11,6 +11,7 @@ import { CustomerLayoutComponent } from "./customer/components/customer-layout/c
 import { CustomerHomeComponent } from "./customer/components/customer-home/customer-home.component";
 import { CustomerProfileComponent } from "./customer/components/customer-profile/customer-profile.component";
 import { CustomerHistoryComponent } from "./customer/components/customer-history/customer-history.component";
+import { CustomerEditProfileComponent } from "./customer/components/customer-edit-profile/customer-edit-profile.component";
 
 import { ProviderHomeComponent } from "./provider/components/provider-home/provider-home.component";
 
@@ -26,6 +27,7 @@ const routes: Routes = [
       { path: "", redirectTo: "home", pathMatch: "full" },
       { path: "home", component: CustomerHomeComponent },
       { path: "profile", component: CustomerProfileComponent },
+      { path: "editProfile", component: CustomerEditProfileComponent },
       { path: "history", component: CustomerHistoryComponent }
     ]
   },

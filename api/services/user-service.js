@@ -20,5 +20,9 @@ module.exports = {
   getById: async function(id) {
     if (!id || !mongoose.Types.ObjectId.isValid(id)) throw "Invalid parameter";
     return await User.findById(id);
+  },
+  getByType: async function(type) {
+    if (!type) throw "Invalid parameter";
+    return await User.find({ type });
   }
 };

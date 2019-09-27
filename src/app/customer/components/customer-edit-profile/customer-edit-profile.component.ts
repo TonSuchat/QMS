@@ -1,30 +1,32 @@
 import { Component, OnInit } from "@angular/core";
 import { NgxSpinnerService } from "ngx-spinner";
-import { Router } from "@angular/router";
-
 import { AuthService } from "src/app/services/auth.service";
 import { ApiService } from "src/app/shared/api.service";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { User } from "src/app/shared/user";
 
 @Component({
-  selector: "app-customer-profile",
-  templateUrl: "./customer-profile.component.html",
-  styleUrls: ["./customer-profile.component.css"]
+  selector: "app-customer-edit-profile",
+  templateUrl: "./customer-edit-profile.component.html",
+  styleUrls: ["./customer-edit-profile.component.css"]
 })
-export class CustomerProfileComponent implements OnInit {
+export class CustomerEditProfileComponent implements OnInit {
+  editForm: FormGroup;
   user: User = null;
+  updating: boolean = false;
   errorMessage: string = null;
 
   constructor(
     private authService: AuthService,
-    private apiService: ApiService,
     private spinner: NgxSpinnerService,
-    private router: Router
+    private apiService: ApiService
   ) {}
 
   ngOnInit() {
     this.getUser();
   }
+
+  onSubmit() {}
 
   getUser() {
     this.spinner.show();
@@ -33,6 +35,8 @@ export class CustomerProfileComponent implements OnInit {
     this.apiService.getUser(user._id).subscribe(
       user => {
         this.user = user;
+        // initial edit form
+        this.initialEditForm();
         this.spinner.hide();
       },
       err => {
@@ -42,8 +46,14 @@ export class CustomerProfileComponent implements OnInit {
     );
   }
 
-  editClick() {
-    // redirect to edit profile page
-    this.router.navigate(["/customer/editProfile"]);
+  initialEditForm() {
+    this.editForm = new FormGroup({
+      firstName: new FormControl(this.user.firstName, [Validators.required]),
+      lastName: new FormControl(this.user.lastName, [Validators.required]),
+      mobilePhone: new FormControl(this.user.mobilePhone, [
+        Validators.required
+      ]),
+      address: new FormControl(this.user.address)
+    });
   }
 }

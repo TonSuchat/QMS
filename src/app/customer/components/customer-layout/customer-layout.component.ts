@@ -13,6 +13,7 @@ export class CustomerLayoutComponent implements OnInit {
   faLink = faLink;
   faHome = faHome;
   faHistory = faHistory;
+
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {}

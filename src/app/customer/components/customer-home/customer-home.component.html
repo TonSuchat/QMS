@@ -1,16 +1,25 @@
+<ngx-spinner></ngx-spinner>
 <div nz-row>
   <div nz-col nzSpan="24">
     <nz-select
       style="width:100%;"
-      nzShowSearch
+      [nzShowSearch]="true"
       nzAllowClear
       nzPlaceHolder="Search provider..."
+      [(ngModel)]="selectedProvider"
+      (ngModelChange)="onSelectProvider($event)"
     >
-      <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+      <nz-option
+        *ngFor="let provider of providers"
+        [nzLabel]="provider.firstName + ' ' + provider.lastName"
+        [nzValue]="provider._id"
+      ></nz-option>
     </nz-select>
   </div>
 </div>
-<div nz-row style="margin-top: 10px;">
+<span>Selected value: {{ selectedProvider }}</span>
+
+<!-- <div nz-row style="margin-top: 10px;">
   <div nz-col nzSpan="24">
     <nz-table #basicTable [nzData]="listOfData">
       <thead>
@@ -35,4 +44,4 @@
       </tbody>
     </nz-table>
   </div>
-</div>
+</div> -->

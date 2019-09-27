@@ -1,0 +1,66 @@
+<ngx-spinner></ngx-spinner>
+<div *ngIf="user" nz-row>
+  <div nz-col nzSpan="24">
+    <form nz-form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <nz-form-item>
+        <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="firstName"
+          >First name</nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="16"
+          [nzXs]="24"
+          nzErrorTip="Please input your first name"
+        >
+          <nz-input-group>
+            <input type="text" nz-input formControlName="firstName" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="lastName"
+          >Last name</nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="16"
+          [nzXs]="24"
+          nzErrorTip="Please input your last name"
+        >
+          <nz-input-group>
+            <input type="text" nz-input formControlName="lastName" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="mobilePhone"
+          >Mobile phone</nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="16"
+          [nzXs]="24"
+          nzErrorTip="Please input your mobile phone"
+        >
+          <nz-input-group>
+            <input type="text" nz-input formControlName="mobilePhone" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="address"
+          >Address</nz-form-label
+        >
+        <nz-form-control [nzSm]="16" [nzXs]="24">
+          <nz-input-group>
+            <textarea formControlName="address" nz-input rows="3"></textarea>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzSpan]="16" [nzOffset]="5">
+          <button nz-button [nzType]="'primary'" [nzLoading]="updating">
+            Update
+          </button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+</div>

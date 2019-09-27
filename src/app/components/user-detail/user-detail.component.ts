@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { User } from "../../shared/user";
 
 @Component({
@@ -8,6 +8,7 @@ import { User } from "../../shared/user";
 })
 export class UserDetailComponent implements OnInit {
   @Input() user: User;
+  @Output() editClick: EventEmitter<any> = new EventEmitter();
 
   constructor() {}
 

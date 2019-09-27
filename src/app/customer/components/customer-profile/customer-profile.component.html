@@ -1,7 +1,11 @@
-<app-user-detail *ngIf="user" [user]="user"></app-user-detail>
+<ngx-spinner></ngx-spinner>
+<app-user-detail
+  *ngIf="user"
+  (editClick)="editClick()"
+  [user]="user"
+></app-user-detail>
 <nz-alert
   *ngIf="errorMessage"
   nzType="error"
   [nzMessage]="errorMessage"
 ></nz-alert>
-<ngx-spinner></ngx-spinner>

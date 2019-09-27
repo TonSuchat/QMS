@@ -18,4 +18,10 @@ export class ApiService {
       .get<User>(`${this.api_url}/user/profile/${id}`)
       .pipe(catchError(handleError));
   }
+
+  getUserByType(type: string): Observable<User[]> {
+    return this.http
+      .get<User[]>(`${this.api_url}/user/getByType?type=${type}`)
+      .pipe(catchError(handleError));
+  }
 }
