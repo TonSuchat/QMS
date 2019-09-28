@@ -1,4 +1,4 @@
-<h1>This project created for learning how's the MEAN stack working</h1>
+<h2>This project created for learning how's the MEAN stack working</h2>
 
 <h3>Stacks</h3>
 <ul>
@@ -8,4 +8,4 @@
 <li>Database: MongoDB with bcrypt package for encrypt user password</li>
 </ul>
 
-<p>The system just the example scenario for register, signin and get the jwt token for private api endpoints along with CRUD with mongodb commands.</p>
+<p>The system just the example scenario for register, signin, get and edit profile, Generated the jwt token for private api endpoints along with CRUD with mongodb commands, Also learning the angular guard service and angular structures(module, component, service, interceptor)</p>
