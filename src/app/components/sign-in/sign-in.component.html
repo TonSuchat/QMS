@@ -4,9 +4,10 @@
       <form nz-form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
         <nz-form-item>
           <nz-form-control nzErrorTip="Please input your valid email!">
-            <nz-input-group nzPrefixIcon="user">
+            <nz-input-group>
               <input
                 type="text"
+                id="email"
                 nz-input
                 formControlName="email"
                 placeholder="Email"
@@ -16,8 +17,9 @@
         </nz-form-item>
         <nz-form-item>
           <nz-form-control nzErrorTip="Please input your Password!">
-            <nz-input-group nzPrefixIcon="lock">
+            <nz-input-group>
               <input
+                id="password"
                 type="password"
                 nz-input
                 formControlName="password"
@@ -28,7 +30,7 @@
         </nz-form-item>
         <nz-form-item>
           <nz-form-control>
-            <nz-radio-group formControlName="type">
+            <nz-radio-group formControlName="type" id="type">
               <label nz-radio nzValue="customer">Customer</label>
               <label nz-radio nzValue="provider">Provider</label>
             </nz-radio-group>
@@ -44,6 +46,7 @@
               class="login-form-button"
               [nzType]="'primary'"
               [nzLoading]="signinFetching"
+              id="loginBtn"
             >
               Log in
             </button>

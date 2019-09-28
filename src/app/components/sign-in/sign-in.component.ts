@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { Router } from "@angular/router";
 import { AuthService } from "../../services/auth.service";
 import { setDirtyAndValidate } from "../../utility/helper";
@@ -11,8 +10,6 @@ import { setDirtyAndValidate } from "../../utility/helper";
   styleUrls: ["./sign-in.component.css"]
 })
 export class SignInComponent implements OnInit {
-  faEnvelope = faEnvelope;
-  faLock = faLock;
   signInForm: FormGroup;
   errorMessage: string = null;
   signinFetching: boolean = false;
