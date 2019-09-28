@@ -24,4 +24,10 @@ export class ApiService {
       .get<User[]>(`${this.api_url}/user/getByType?type=${type}`)
       .pipe(catchError(handleError));
   }
+
+  updateUser(user: User): Observable<any> {
+    return this.http
+      .put(`${this.api_url}/user/updateUser`, user)
+      .pipe(catchError(handleError));
+  }
 }

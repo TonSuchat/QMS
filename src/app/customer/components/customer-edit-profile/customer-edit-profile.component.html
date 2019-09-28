@@ -12,7 +12,12 @@
           nzErrorTip="Please input your first name"
         >
           <nz-input-group>
-            <input type="text" nz-input formControlName="firstName" />
+            <input
+              type="text"
+              nz-input
+              [(ngModel)]="user.firstName"
+              formControlName="firstName"
+            />
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
@@ -26,7 +31,12 @@
           nzErrorTip="Please input your last name"
         >
           <nz-input-group>
-            <input type="text" nz-input formControlName="lastName" />
+            <input
+              type="text"
+              nz-input
+              [(ngModel)]="user.lastName"
+              formControlName="lastName"
+            />
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
@@ -40,7 +50,12 @@
           nzErrorTip="Please input your mobile phone"
         >
           <nz-input-group>
-            <input type="text" nz-input formControlName="mobilePhone" />
+            <input
+              type="text"
+              nz-input
+              [(ngModel)]="user.mobilePhone"
+              formControlName="mobilePhone"
+            />
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
@@ -50,7 +65,12 @@
         >
         <nz-form-control [nzSm]="16" [nzXs]="24">
           <nz-input-group>
-            <textarea formControlName="address" nz-input rows="3"></textarea>
+            <textarea
+              formControlName="address"
+              [(ngModel)]="user.address"
+              nz-input
+              rows="3"
+            ></textarea>
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
@@ -61,6 +81,11 @@
           </button>
         </nz-form-control>
       </nz-form-item>
+      <nz-alert
+        *ngIf="errorMessage"
+        nzType="error"
+        [nzMessage]="errorMessage"
+      ></nz-alert>
     </form>
   </div>
 </div>
