@@ -18,6 +18,8 @@ services:
   database:
     image: mongo
     volumes:
-      - "/data/db:/data/db"
+      - qms-data:/data/db"
     ports:
       - "27017:27017"
+volumes:
+  qms-data:
